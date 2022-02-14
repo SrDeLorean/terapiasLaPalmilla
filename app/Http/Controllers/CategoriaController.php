@@ -75,4 +75,60 @@ class CategoriaController extends Controller
         return response('Se borro la categoria correctamente');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function WithSoftDelete()
+    {
+
+        $results = Categoria::withTrashed()->get();
+        return response($results);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function softDeleted()
+    {
+        $results = Categoria::onlyTrashed()->get();
+
+        return response($results);
+    }
+
+    public function restore($id)
+    {
+
+        $data = Categoria::onlyTrashed()->find($id);
+
+        if (!is_null($data)) {
+
+            $data->restore();
+            return response('Se restauro la categoria correctamente');
+        } else {
+
+            return response('No se encontro la categoria');
+        }
+        return response('No se encontro la categoria');
+    }
+
+    public function permanentDeleteSoftDeleted($id)
+    {
+        $data = Categoria::onlyTrashed()->find($id);
+
+        if (!is_null($data)) {
+
+            $data->forceDelete();
+            return response('Se elimino permanentemente la categoria correctamente');
+        } else {
+
+            return response('No se encontro la categoria');
+        }
+        return response('No se encontro la categoria');
+    }
+
 }

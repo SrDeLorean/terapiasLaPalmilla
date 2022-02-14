@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Reservas extends Migration
+class Horarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Reservas extends Migration
      */
     public function up()
     {
-        Schema::create('reservas', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->date('dia');
-            $table->text('detalle');
+            $table->string('inicio');
+            $table->string('termino');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,9 @@ class Reservas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservas');
+        Schema::dropIfExists('horarios', function (Blueprint $table) {
+
+            $table->dropSoftDeletes(); //add this line
+        });
     }
 }

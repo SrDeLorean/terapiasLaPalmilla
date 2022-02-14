@@ -18,6 +18,7 @@ class Categorias extends Migration
             $table->string('titulo');
             $table->text('descripcion');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,9 @@ class Categorias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('categorias', function (Blueprint $table) {
+
+            $table->dropSoftDeletes(); //add this line
+        });
     }
 }

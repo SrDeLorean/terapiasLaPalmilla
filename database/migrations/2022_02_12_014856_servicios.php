@@ -18,9 +18,8 @@ class Servicios extends Migration
             $table->string('titulo');
             $table->text('descripcion');
             $table->integer('precio');
-            $table->bigInteger('idCategoria')->unsigned();
-            $table->foreign('idCategoria')->references('id')->on('categorias');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +30,9 @@ class Servicios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicios');
+        Schema::dropIfExists('servicios', function (Blueprint $table) {
+
+            $table->dropSoftDeletes(); //add this line
+        });
     }
 }

@@ -48,12 +48,6 @@ class ServicioController extends Controller
         }else{
             return response('La precio esta en blanco');
         }
-
-        if($request->input('idCategoria')){
-            $data->idCategoria = $request->input('idCategoria');
-        }else{
-            return response('La idCategoria esta en blanco');
-        }
         
         $data->save();
 
@@ -81,12 +75,6 @@ class ServicioController extends Controller
             return response('La precio esta en blanco');
         }
 
-        if($request->input('idCategoria')){
-            $data->idCategoria = $request->input('idCategoria');
-        }else{
-            return response('La idCategoria esta en blanco');
-        }
-
         $data->save();
     
         return response('Se modifico el horario correctamente');
@@ -97,6 +85,62 @@ class ServicioController extends Controller
         $data->delete();
 
         return response('Se borro el servicio correctamente');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function WithSoftDelete()
+    {
+
+        $results = Servicio::withTrashed()->get();
+        return response($results);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function softDeleted()
+    {
+        $results = Servicio::onlyTrashed()->get();
+
+        return response($results);
+    }
+
+    public function restore($id)
+    {
+
+        $data = Servicio::onlyTrashed()->find($id);
+
+        if (!is_null($data)) {
+
+            $data->restore();
+            return response('Se restauro la servicio correctamente');
+        } else {
+
+            return response('No se encontro la servicio');
+        }
+        return response('No se encontro la servicio');
+    }
+
+    public function permanentDeleteSoftDeleted($id)
+    {
+        $data = Servicio::onlyTrashed()->find($id);
+
+        if (!is_null($data)) {
+
+            $data->forceDelete();
+            return response('Se elimino permanentemente la servicio correctamente');
+        } else {
+
+            return response('No se encontro la servicio');
+        }
+        return response('No se encontro la servicio');
     }
 
 }
