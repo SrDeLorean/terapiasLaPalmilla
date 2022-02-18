@@ -15,17 +15,17 @@ class Reservas extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
-            $table->bigInteger('idCategoria')->unsigned();
-            $table->foreign('idCategoria')->references('id')->on('categorias');
-            $table->bigInteger('idServicio')->unsigned();
-            $table->foreign('idServicio')->references('id')->on('servicios');
-            $table->bigInteger('idHorario')->unsigned();
-            $table->foreign('idHorario')->references('id')->on('horarios');
+            $table->string('inicio');
+            $table->string('termino');
             $table->string('nombre');
-            $table->string('correo');
             $table->string('telefono');
-            $table->integer('precio');
+            $table->string('email');
+            $table->boolean('estado');
+            $table->string('nota');
+            $table->bigInteger('tiporeserva')->unsigned();
+            $table->foreign('tiporeserva')->references('id')->on('tiporeservas');
+            $table->bigInteger('estadoreserva')->unsigned();
+            $table->foreign('estadoreserva')->references('id')->on('estadoreservas');
             $table->timestamps();
             $table->softDeletes();
         });

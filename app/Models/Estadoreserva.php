@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Horario extends Model
+class Estadoreserva extends Model
 {
 
     use SoftDeletes;
@@ -15,7 +15,7 @@ class Horario extends Model
      * @var array
      */
     protected $fillable = [
-        'inicio', 'termino', 'disponiblepack'
+        'estado'
     ];
 
 }

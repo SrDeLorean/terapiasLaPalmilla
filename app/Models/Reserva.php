@@ -15,7 +15,7 @@ class Reserva extends Model
      * @var array
      */
     protected $fillable = [
-        'fecha', 'idCategoria', 'idServicio', 'idHorario', 'nombre', 'correo', 'telefono', 'precio'
+        'inicio', 'termino', 'nombre', 'telefono', 'email', 'estado', 'nota', 'tiporeserva', 'estadoreserva'
     ];
 
 }

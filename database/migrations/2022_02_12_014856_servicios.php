@@ -16,6 +16,9 @@ class Servicios extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
+            $table->integer('cantidadhoras');
+            $table->string('horainicio');
+            $table->string('horatermino');
             $table->text('descripcion');
             $table->integer('precio');
             $table->timestamps();

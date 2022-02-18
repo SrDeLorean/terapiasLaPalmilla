@@ -15,7 +15,7 @@ class Servicio extends Model
      * @var array
      */
     protected $fillable = [
-        'titulo', 'descripcion', 'precio'
+        'titulo', 'cantidadhoras', 'horainicio', 'horatermino', 'descripcion', 'precio'
     ];
  
 }

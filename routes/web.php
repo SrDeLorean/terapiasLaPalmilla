@@ -65,10 +65,26 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('serviciocategoria', ['uses' => 'ServiciocategoriaController@store']);
     $router->put('serviciocategoria/{id}', ['uses' => 'ServiciocategoriaController@update']);
     $router->delete('serviciocategoria/{id}', ['uses' => 'ServiciocategoriaController@destroy']);
-    $router->delete('serviciocategoria/delete/{id}','ServiciocategoriaController@permanentDeleteSoftDeleted');
-    $router->get('serviciocategoria/withsoftdelete', ['uses' => 'ServiciocategoriaController@WithSoftDelete']);
-    $router->get('serviciocategoria/softdeleted', ['uses' => 'ServiciocategoriaController@softDeleted']);
     $router->get('serviciocategoria/{id}', ['uses' => 'ServiciocategoriaController@show']);
-    $router->patch('serviciocategoria/{id}', ['uses' => 'ServiciocategoriaController@restore']);
+
+    $router->get('estadoreserva', ['uses' => 'EstadoreservaController@index']);
+    $router->post('estadoreserva', ['uses' => 'EstadoreservaController@store']);
+    $router->put('estadoreserva/{id}', ['uses' => 'EstadoreservaController@update']);
+    $router->delete('estadoreserva/{id}', ['uses' => 'EstadoreservaController@destroy']);
+    $router->delete('estadoreserva/delete/{id}','EstadoreservaController@permanentDeleteSoftDeleted');
+    $router->get('estadoreserva/withsoftdelete', ['uses' => 'EstadoreservaController@WithSoftDelete']);
+    $router->get('estadoreserva/softdeleted', ['uses' => 'EstadoreservaController@softDeleted']);
+    $router->get('estadoreserva/{id}', ['uses' => 'EstadoreservaController@show']);
+    $router->patch('estadoreserva/{id}', ['uses' => 'EstadoreservaController@restore']);
+
+    $router->get('tiporeserva', ['uses' => 'TiporeservaController@index']);
+    $router->post('tiporeserva', ['uses' => 'TiporeservaController@store']);
+    $router->put('tiporeserva/{id}', ['uses' => 'TiporeservaController@update']);
+    $router->delete('tiporeserva/{id}', ['uses' => 'TiporeservaController@destroy']);
+    $router->delete('tiporeserva/delete/{id}','TiporeservaController@permanentDeleteSoftDeleted');
+    $router->get('tiporeserva/withsoftdelete', ['uses' => 'TiporeservaController@WithSoftDelete']);
+    $router->get('tiporeserva/softdeleted', ['uses' => 'TiporeservaController@softDeleted']);
+    $router->get('tiporeserva/{id}', ['uses' => 'TiporeservaController@show']);
+    $router->patch('tiporeserva/{id}', ['uses' => 'TiporeservaController@restore']);
      });
 

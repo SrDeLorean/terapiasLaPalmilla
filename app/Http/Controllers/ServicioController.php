@@ -37,6 +37,24 @@ class ServicioController extends Controller
             return response('La titulo esta en blanco');
         }
 
+        if($request->input('cantidadhoras')){
+            $data->cantidadhoras = $request->input('cantidadhoras');
+        }else{
+            return response('La cantidadhoras esta en blanco');
+        }
+
+        if($request->input('horainicio')){
+            $data->horainicio = $request->input('horainicio');
+        }else{
+            return response('La horainicio esta en blanco');
+        }
+
+        if($request->input('horatermino')){
+            $data->horatermino = $request->input('horatermino');
+        }else{
+            return response('La horatermino esta en blanco');
+        }
+
         if($request->input('descripcion')){
             $data->descripcion = $request->input('descripcion');
         }else{
@@ -61,6 +79,24 @@ class ServicioController extends Controller
             $data->titulo = $request->input('titulo');
         }else{
             return response('La titulo esta en blanco');
+        }
+
+        if($request->input('cantidadhoras')){
+            $data->cantidadhoras = $request->input('cantidadhoras');
+        }else{
+            return response('La cantidadhoras esta en blanco');
+        }
+
+        if($request->input('horainicio')){
+            $data->horainicio = $request->input('horainicio');
+        }else{
+            return response('La horainicio esta en blanco');
+        }
+
+        if($request->input('horatermino')){
+            $data->horatermino = $request->input('horatermino');
+        }else{
+            return response('La horatermino esta en blanco');
         }
 
         if($request->input('descripcion')){

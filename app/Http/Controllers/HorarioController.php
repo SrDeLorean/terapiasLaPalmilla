@@ -42,6 +42,12 @@ class HorarioController extends Controller
         }else{
             return response('La termino esta en blanco');
         }
+
+        if($request->input('disponiblepack')){
+            $data->disponiblepack = $request->input('disponiblepack');
+        }else{
+            return response('La termino esta en blanco');
+        }
         
         $data->save();
 
@@ -59,6 +65,12 @@ class HorarioController extends Controller
 
         if($request->input('termino')){
             $data->termino = $request->input('termino');
+        }else{
+            return response('La termino esta en blanco');
+        }
+
+        if($request->input('disponiblepack')){
+            $data->disponiblepack = $request->input('disponiblepack');
         }else{
             return response('La termino esta en blanco');
         }
